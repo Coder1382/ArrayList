@@ -29,10 +29,10 @@ public class MyArrayList<T extends Object> implements Comparator<T> {
         arr[index]=ob;
         size+=1;
     }
-    public Object replace(int index,T ob){
+    public T replace(int index,T ob){
         if(index<0 || index>=arr.length)
             throw new IndexOutOfBoundsException("Out of boundaries");
-        Object prev=arr[index];
+        T prev=(T)arr[index];
         arr[index]=ob;
         return prev;
     }
@@ -43,15 +43,15 @@ public class MyArrayList<T extends Object> implements Comparator<T> {
             System.out.println("Unexpected Error");
         }
     }
-    public Object get(int index){
+    public T get(int index){
         if(index<0 || index>=arr.length)
             throw new IndexOutOfBoundsException("Out of boundaries");
-        return arr[index];
+        return (T)arr[index];
     }
-    public Object remove(int index){
+    public T remove(int index){
         if(index<0 || index>=arr.length)
             throw new IndexOutOfBoundsException("Out of boundaries");
-        Object ob=arr[index];
+        T ob=(T)arr[index];
         if(arr[index]!=null)
             size-=1;
         arr[index] = null;

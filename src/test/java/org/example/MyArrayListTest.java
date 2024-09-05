@@ -27,10 +27,6 @@ class MyArrayListTest {
 
     @Test
     void get() {
-        num.add(7);
-        assertEquals(7,num.get(0));
-        num.add(10,3);
-        assertEquals(3,num.get(10));
         str.add("cat");
         assertEquals("cat",str.get(0));
         str.add(2,"kot");
@@ -39,6 +35,33 @@ class MyArrayListTest {
         assertEquals('x',ch.get(0));
         ch.add(1,'a');
         assertEquals('a',ch.get(1));
+        MyArrayList<Integer> dub=new MyArrayList<>();
+        num.add(1000,0);
+        dub.add(1000,0);
+        for(int i=0; i<1000; i+=2) {
+            num.add(i, 1000 - i);
+            dub.add(i, 1000 - i);
+        }
+        for(int i=0; i<1000; i+=2)
+            if(num.get(i+1)!=null)
+                assertFalse(num.get(i)<num.get(i+1));
+        num.sort();
+        dub.quicksort();
+        for(int i=0; i<=1000; ++i)
+            if(num.get(i+1)!=null)
+                assertTrue(num.get(i)<num.get(i+1));
+        for(int i=0; i+1<num.size(); ++i)
+            assertTrue(num.get(i)<num.get(i+1));
+        for(int i=0; i<=1000; ++i)
+            if(dub.get(i+1)!=null)
+                assertTrue(dub.get(i)<dub.get(i+1));
+        for(int i=0; i+1<dub.size(); ++i)
+            assertTrue(dub.get(i)<dub.get(i+1));
+        assertTrue(num.size()==dub.size());
+        for(int i=0; i<dub.size(); ++i)
+            //if(num.get(i)!=dub.get(i))
+                //System.out.printf("%d %d\n",num.get(i),dub.get(i));
+            assertTrue((int)num.get(i)==(int)dub.get(i));
     }
 
     @Test
