@@ -17,7 +17,7 @@ class MyHashMapTest {
     @Test
     void replace() {
         str.put('a',"a");
-        str.replace('a',"replaced");
+        str.put('a',"replaced");
         str.replace('c',"replaced");
         num.put(1,1.0);
         num.replace(1,0.0);
@@ -96,9 +96,9 @@ class MyHashMapTest {
     @Test
     void capacity() {
         str.put('a',"a"); str.put('b',"b"); str.put('c',"c");
-        str.put('a',"a"); str.put('b',"b"); str.put('c',"c");
-        str.put('a',"a"); str.put('b',"b"); str.put('c',"c");
-        str.put('a',"a"); str.put('b',"b"); str.put('c',"c");
+        str.put('d',"a"); str.put('e',"b"); str.put('i',"c");
+        str.put('f',"a"); str.put('g',"b"); str.put('n',"c");
+        str.put('m',"a"); str.put('k',"b"); str.put('t',"c");
         num.put(1,1.0);
         num.put(2,2.0);
         assertEquals(20,str.capacity());

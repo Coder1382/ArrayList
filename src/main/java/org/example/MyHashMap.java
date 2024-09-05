@@ -21,24 +21,31 @@ public class MyHashMap<K, T extends Object> {
      * This function adds an element with value of val under the specified key
      * @param key Object parameter of type K, indicating the key
      * @param val Object parameter of type T, indicating the value
+     * @return This function returns the previous value under the specified key if found, or nul otherwise
      */
-    public void put(K key, T val){
+    public T put(K key, T val){
         int i;
+        T ob=null;
         if(key==null || val==null)
             throw new IllegalArgumentException("Provide valid values");
-        for (i = 0; i < keys.length && keys[i] != null; ++i) ;
+        for (i = 0; i < keys.length && keys[i] != null && keys[i]!=key; ++i) ;
         if (i == keys.length)
             moreCapacity();
-        keys[i] = key;
+        else if(keys[i]==key)
+            ob=(T)vals[i];
+        else{
+            keys[i]=key;
+            size+=1;
+        }
         vals[i] = val;
-        size += 1;
+        return ob;
     }
 
     /***
      * This function replaces value under the specified key with the value of val
      * @param key Object parameter of type K, indicating the key under which the value is to be replaces
      * @param val Object parameter of type T, indicating the value to replace the existing that if found
-     * @return This function return the replaced value, or null otherwise
+     * @return This function returns the replaced value, or null otherwise
      */
     public T replace(K key,T val){
         T prev=null;

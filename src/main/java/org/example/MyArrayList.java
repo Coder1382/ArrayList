@@ -207,35 +207,6 @@ public class MyArrayList<T extends Object> implements Comparator<T> {
      */
     @Override
     public int compare(T ob1, T ob2) {
-        if(ob1 instanceof Byte || ob1 instanceof Short || ob1 instanceof Integer || ob1 instanceof Character) {
-            if ((Integer) ob1 > (Integer) ob2)
-                return 1;
-            else if ((Integer) ob1 < (Integer) ob2)
-                return -1;
-            else return 0;
-        }
-        else if(ob1 instanceof Long) {
-            if ((Long) ob1 > (Long) ob2)
-                return 1;
-            else if ((Long) ob1 < (Long) ob2)
-                return -1;
-            else return 0;
-        }
-        else if(ob1 instanceof Float || ob1 instanceof Double){
-            if ((Double) ob1 > (Double) ob2)
-                return 1;
-            else if ((Double) ob1 < (Double) ob2)
-                return -1;
-            else return 0;
-        }
-        else if(ob1 instanceof String)
-            return ((String) ob1).compareTo((String) ob2);
-        else{
-            if(ob1.hashCode()>ob2.hashCode())
-                return 1;
-            if(ob1.hashCode()<ob2.hashCode())
-                return -1;
-            else return 0;
-        }
+        return ((Comparable<T>)ob1).compareTo(ob2);
     }
 }
