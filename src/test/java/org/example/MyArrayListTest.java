@@ -27,10 +27,10 @@ class MyArrayListTest {
 
     @Test
     void get() {
-        str.add("cat");
-        assertEquals("cat",str.get(0));
-        str.add(2,"kot");
-        assertEquals("kot",str.get(2));
+        str.add("kot");
+        assertEquals("kot",str.get(0));
+        str.add(2,"cat");
+        assertEquals("cat",str.get(2));
         ch.add('x');
         assertEquals('x',ch.get(0));
         ch.add(1,'a');
@@ -47,6 +47,10 @@ class MyArrayListTest {
                 assertFalse(num.get(i)<num.get(i+1));
         num.sort();
         dub.quicksort();
+        str.quicksort();
+        str.sort();
+        assertEquals("cat",str.get(0));
+        assertEquals("kot",str.get(1));
         for(int i=0; i<=1000; ++i)
             if(num.get(i+1)!=null)
                 assertTrue(num.get(i)<num.get(i+1));

@@ -117,7 +117,7 @@ public class MyArrayList<T extends Object> implements Comparator<T> {
             }
         Object ob;
         for(int i=0; arr[i+1]!=null; ++i)
-            if(compare((T)arr[i],(T)arr[i+1])==1){
+            if(compare((T)arr[i],(T)arr[i+1])>0){
                 ob=arr[i];
                 arr[i]=arr[i+1];
                 arr[i+1]=ob;
@@ -144,7 +144,7 @@ public class MyArrayList<T extends Object> implements Comparator<T> {
         do {
             Object pivot=arr[last];
             for (i = 0; i < last; ++i)
-                if (compare((T) arr[i], (T) pivot)==1) {
+                if (compare((T) arr[i], (T) pivot)>0) {
                     arr[last]=arr[i];
                     arr[i]=pivot;
                     pivot=arr[last];
@@ -207,6 +207,14 @@ public class MyArrayList<T extends Object> implements Comparator<T> {
      */
     @Override
     public int compare(T ob1, T ob2) {
-        return ((Comparable<T>)ob1).compareTo(ob2);
+        if(ob1 instanceof Number || ob1 instanceof String || ob1 instanceof Character)
+            return ((Comparable<T>)ob1).compareTo((T)ob2);
+        else {
+            if (ob1.hashCode() > ob2.hashCode())
+                return 1;
+            if (ob1.hashCode() < ob2.hashCode())
+                return -1;
+            return 0;
+        }
     }
 }
