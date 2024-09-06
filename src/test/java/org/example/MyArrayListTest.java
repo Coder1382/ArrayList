@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyArrayListTest {
-    MyArrayList<Integer> num;
+    MyArrayList<Double> num;
     MyArrayList<Character> ch;
     MyArrayList<String> str;
     @BeforeEach
@@ -18,10 +18,10 @@ class MyArrayListTest {
 
     @Test
     void replace() {
-        num.add(7);
+        num.add(7.0);
         assertEquals(7,num.get(0));
-        num.add(10,3);
-        assertEquals(7,num.replace(0,5));
+        num.add(10,3.0);
+        assertEquals(7,num.replace(0,5.0));
         assertEquals(5,num.get(0));
     }
 
@@ -36,10 +36,10 @@ class MyArrayListTest {
         ch.add(1,'a');
         assertEquals('a',ch.get(1));
         MyArrayList<Integer> dub=new MyArrayList<>();
-        num.add(1000,0);
+        num.add(1000,0.0);
         dub.add(1000,0);
         for(int i=0; i<1000; i+=2) {
-            num.add(i, 1000 - i);
+            num.add(i, 1000.0 - i);
             dub.add(i, 1000 - i);
         }
         for(int i=0; i<1000; i+=2)
@@ -65,12 +65,12 @@ class MyArrayListTest {
         for(int i=0; i<dub.size(); ++i)
             //if(num.get(i)!=dub.get(i))
                 //System.out.printf("%d %d\n",num.get(i),dub.get(i));
-            assertTrue((int)num.get(i)==(int)dub.get(i));
+            assertTrue((double)num.get(i)==(int)dub.get(i));
     }
 
     @Test
     void remove() {
-        num.add(5,10);
+        num.add(5,10.0);
         assertEquals(10,num.get(5));
         assertEquals(null,num.get(0));
         str.add("dog"); str.add(5,"cat");
@@ -82,7 +82,7 @@ class MyArrayListTest {
     @Test
     void capacity() {
         assertEquals(10,num.capacity());
-        num.add(10,0);
+        num.add(10,0.0);
         assertEquals(20,num.capacity());
     }
 
@@ -107,7 +107,7 @@ class MyArrayListTest {
         str.remove(0);
         assertEquals(true,str.isEmpty());
         for(int i=0; i<1000; ++i)
-            num.add(i);
+            num.add((double)i);
         for(int i=0; i<1000; ++i)
             assertEquals(i,num.get(i));
         num.clean();

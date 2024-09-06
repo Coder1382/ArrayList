@@ -3,7 +3,7 @@ import java.io.*;
 import java.lang.*;
 import java.util.*;
 
-public class MyArrayList<T extends Object> implements Comparator<T> {
+public class MyArrayList<T> implements Comparator<T> {
     Object[] arr;
     int size=0;
 
@@ -195,7 +195,7 @@ public class MyArrayList<T extends Object> implements Comparator<T> {
         try {
             arr = Arrays.copyOf(arr, arr.length * 2);
         }catch(Exception e){
-            System.out.println("Unexpected Error");
+            throw e;
         }
     }
 
