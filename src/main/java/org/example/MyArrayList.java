@@ -192,11 +192,7 @@ public class MyArrayList<T> implements Comparator<T> {
      * This function increases the array capacity twice a time
      */
     void moreCapacity(){
-        try {
-            arr = Arrays.copyOf(arr, arr.length * 2);
-        }catch(Exception e){
-            throw e;
-        }
+        arr = Arrays.copyOf(arr, arr.length * 2);
     }
 
     /***
